@@ -1,0 +1,260 @@
+MySQL Shell 8.4.10
+
+Copyright (c) 2016, 2026, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+WARNING: Found errors loading plugins, for more details look at the log at: C:\Users\fdo_g\AppData\Roaming\MySQL\mysqlsh\mysqlsh.log
+ MySQL  SQL > \connect root@localhost:3307
+Creating a session to 'root@localhost:3307'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 11.4.9-MariaDB MariaDB Server
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3307  SQL > use tbd_exa1;
+Default schema set to `tbd_exa1`.
+Fetching global names, object names from `tbd_exa1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3307  tbd_exa1  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| eva1               |
+| eva1_copia         |
+| information_schema |
+| mysql              |
+| northwind          |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_exa1           |
+| test               |
+| world_x            |
++--------------------+
+12 rows in set (0.0009 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > create table info_profesor(
+                                     -> id_colegio int not null key auto_increment,
+                                     -> profesor varchar(50) not null,
+                                     -> aignatura varchar(20) not null);
+Query OK, 0 rows affected (0.0190 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc info_profesor;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_colegio | int(11)     | NO   | PRI | NULL    | auto_increment |
+| profesor   | varchar(50) | NO   |     | NULL    |                |
+| aignatura  | varchar(20) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.0224 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > show tables;
++--------------------+
+| Tables_in_tbd_exa1 |
++--------------------+
+| info_profesor      |
++--------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > create table asignaturas(
+                                     -> id_asignaturas int not null key auto_increment,
+                                     -> asignaturas varchar(20) not null,
+                                     -> aula varchar(10) not null);
+Query OK, 0 rows affected (0.0077 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc asignaturas
+                                     -> ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > desc asignaturas;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| id_asignaturas | int(11)     | NO   | PRI | NULL    | auto_increment |
+| asignaturas    | varchar(20) | NO   |     | NULL    |                |
+| aula           | varchar(10) | NO   |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.0177 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > show tables;
++--------------------+
+| Tables_in_tbd_exa1 |
++--------------------+
+| asignaturas        |
+| info_profesor      |
++--------------------+
+2 rows in set (0.0008 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > create table curso(
+                                     -> id_curso int not null key auto_increment,
+                                     -> curso^C
+ MySQL  localhost:3307  tbd_exa1  SQL > create table asign_libro(
+                                     -> id_asign_libro int not null auto_increment,
+                                     -> colegio ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > drop database tbd_exa1;
+Query OK, 2 rows affected (0.0452 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| eva1               |
+| eva1_copia         |
+| information_schema |
+| mysql              |
+| northwind          |
+| performance_schema |
+| sakila             |
+| sys                |
+| test               |
+| world_x            |
++--------------------+
+11 rows in set (0.0010 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > create database tbd_exa1;
+Query OK, 1 row affected (0.0015 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > use tbd_exa1;
+Default schema set to `tbd_exa1`.
+Fetching global names, object names from `tbd_exa1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3307  tbd_exa1  SQL > create table profesor(
+                                     -> id_colegio int not null key auto_increment,
+                                     -> colegio varchar(20) not null,
+                                     -> profesor varchar(50) not null,
+                                     -> asignatura varchar(20) not null);
+Query OK, 0 rows affected (0.0082 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor,
+                                     -> colegio c.p cervantes;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '
+colegio c.p cervantes' at line 1
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor(
+                                     -> ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > create table info_aula(
+                                     -> id_info_aula int not null key auto_increment,
+                                     -> aula varchar(10) not null,
+                                     -> curso varchar (10) not null);
+Query OK, 0 rows affected (0.0073 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > create table libro(
+                                     -> id_libro int not null key auto_increment,
+                                     -> libro varchar(40) not null,
+                                     -> editorial varchar(20) not null,
+                                     -> fecha_prestamo date not null);
+Query OK, 0 rows affected (0.0080 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc profesor
+                                     -> ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > desc profesor;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_colegio | int(11)     | NO   | PRI | NULL    | auto_increment |
+| colegio    | varchar(20) | NO   |     | NULL    |                |
+| profesor   | varchar(50) | NO   |     | NULL    |                |
+| asignatura | varchar(20) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.0285 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc info_aula;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id_info_aula | int(11)     | NO   | PRI | NULL    | auto_increment |
+| aula         | varchar(10) | NO   |     | NULL    |                |
+| curso        | varchar(10) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.0183 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc libro;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| id_libro       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| libro          | varchar(40) | NO   |     | NULL    |                |
+| editorial      | varchar(20) | NO   |     | NULL    |                |
+| fecha_prestamo | date        | NO   |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.0172 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor values
+                                     -> ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor values,
+                                     -> c.p cervantes;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '
+c.p cervantes' at line 1
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor(
+                                     -> c.p cervantes);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'cervantes)' at line 2
+ MySQL  localhost:3307  tbd_exa1  SQL > insert values profesor
+                                     -> ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > show tables;
++--------------------+
+| Tables_in_tbd_exa1 |
++--------------------+
+| info_aula          |
+| libro              |
+| profesor           |
++--------------------+
+3 rows in set (0.0009 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > select*from profesor;
+Empty set (0.0015 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor(
+                                     -> value cp cervantes,
+                                     -> ^C
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor values,
+                                     -> colegio(c.p cervantes),
+                                     -> profesor(^C
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor values(
+                                     -> colegio (c.p cervantes),
+                                     -> profesor(juan perez),
+                                     -> asignatura(pensamienti logico));
+ERROR: 1584 (42000): Incorrect parameters in the call to stored function 'colegio'
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor values( colegio (cp cervantes), profesor(juan perez), asignatura(pensamienti logico));
+ERROR: 1584 (42000): Incorrect parameters in the call to stored function 'colegio'
+ MySQL  localhost:3307  tbd_exa1  SQL > insert into profesor values( colegio ("cp cervantes"), profesor("juan perez"), asignatura("pensamienti logico"));
+ERROR: 1305 (42000): FUNCTION tbd_exa1.colegio does not exist
+ MySQL  localhost:3307  tbd_exa1  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| eva1               |
+| eva1_copia         |
+| information_schema |
+| mysql              |
+| northwind          |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_exa1           |
+| test               |
+| world_x            |
++--------------------+
+12 rows in set (0.0010 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > show tables;
++--------------------+
+| Tables_in_tbd_exa1 |
++--------------------+
+| info_aula          |
+| libro              |
+| profesor           |
++--------------------+
+3 rows in set (0.0007 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc info_aula;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id_info_aula | int(11)     | NO   | PRI | NULL    | auto_increment |
+| aula         | varchar(10) | NO   |     | NULL    |                |
+| curso        | varchar(10) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.0156 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc libro;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| id_libro       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| libro          | varchar(40) | NO   |     | NULL    |                |
+| editorial      | varchar(20) | NO   |     | NULL    |                |
+| fecha_prestamo | date        | NO   |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.0183 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > desc profesor;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_colegio | int(11)     | NO   | PRI | NULL    | auto_increment |
+| colegio    | varchar(20) | NO   |     | NULL    |                |
+| profesor   | varchar(50) | NO   |     | NULL    |                |
+| asignatura | varchar(20) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.0167 sec)
+ MySQL  localhost:3307  tbd_exa1  SQL > show table profesor;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'profesor' at line 1
+ MySQL  localhost:3307  tbd_exa1  SQL >
